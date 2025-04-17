@@ -1,0 +1,67 @@
+; Copyright (c) Microsoft Corporation All Rights Reserved
+;
+; Abstract:
+;    INF file for installing the BCM2836 PWM Driver
+;
+
+[Version]
+Signature="$Windows NT$"
+Class=SYSTEM
+ClassGUID={4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider=%ProviderString%
+CatalogFile=rpi4hdmiwavbridge.cat
+PnpLockdown=1
+
+[SourceDisksNames]
+1=%DiskDescription%
+
+[SourceDisksFiles]
+rpi4hdmiwavbridge.sys=1
+rpi4hdmiwavbridge.inf=1
+
+[DestinationDirs]
+rpi4hdmiwavbridge.CopyList = 10,system32\drivers
+
+[Manufacturer]
+%MfgName%=rpi4hdmiwavbridge_Driver,NT$ARCH$
+
+; Excluding drivers from the "Add New Hardware" list.
+[ControlFlags]
+ExcludeFromSelect = *
+
+[rpi4hdmiwavbridge_Driver.NT$ARCH$]
+%rpi4hdmiwavbridge.DeviceDesc%=rpi4hdmiwavbridge, ACPI\RPI73EB
+
+[rpi4hdmiwavbridge]
+CopyFiles=rpi4hdmiwavbridge.CopyList
+AddReg=rpi4hdmiwavbridge.AddReg
+
+[rpi4hdmiwavbridge.CopyList]
+rpi4hdmiwavbridge.sys
+
+[rpi4hdmiwavbridge.AddReg]
+;HKR,,Driver,,rpi4hdmiwavbridge.sys
+
+[rpi4hdmiwavbridge.Services]
+AddService = rpi4hdmiwavbridge, 0x00000002, rpi4hdmiwavbridge_Service_Inst
+
+[rpi4hdmiwavbridge_Service_Inst]
+DisplayName   = %rpi4hdmiwavbridge.SvcDesc%
+ServiceType   = %SERVICE_KERNEL_DRIVER%
+StartType     = %SERVICE_SYSTEM_START%
+ErrorControl  = %SERVICE_ERROR_NORMAL%
+ServiceBinary = %10%\system32\drivers\rpi4hdmiwavbridge.sys
+
+[Strings]
+ProviderString="MS-IOT"
+MfgName="Microsoft"
+DiskDescription="BCM2836 PWM Driver Disk"
+rpi4hdmiwavbridge.DeviceDesc="BCM2836 PWM Controller"
+
+rpi4hdmiwavbridge.SvcDesc = "BCM2836 PWM Controller Driver"
+
+SERVICE_KERNEL_DRIVER   = 1
+SERVICE_SYSTEM_START    = 1
+SERVICE_DEMAND_START    = 3
+SERVICE_ERROR_NORMAL    = 1
+
