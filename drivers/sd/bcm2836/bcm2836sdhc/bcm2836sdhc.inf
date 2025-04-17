@@ -7,7 +7,7 @@ ClassGUID={a0a588a4-c46f-4b37-b7ea-c82fe89870c6}
 Provider=%ProviderString%
 CatalogFile=bcm2836sdhc.cat
 BootCritical=1
-PnpLockdown=1
+
 
 [SourceDisksNames]
 3426=windows cd
@@ -26,7 +26,6 @@ bcm2836sdhc.sys		= 3426
 
 [ControlFlags]
 BasicDriverOk=*
-ExcludeFromSelect=*
 ; ///////////////////////////////////////////////////////////
 ;
 ; Generic Device
@@ -165,4 +164,3 @@ TED="Tokyo Electron Device"
 Ricoh="Ricoh"
 VIA="VIA Technologies, Inc"
 MSI="MSI"
-

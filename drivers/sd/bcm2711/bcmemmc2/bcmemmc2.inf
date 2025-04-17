@@ -21,6 +21,7 @@ Provider    = %ProviderString%
 CatalogFile = bcmemmc2.cat
 PnpLockdown = 1
 
+
 ; ///////////////////////////////////////////////////////////
 ;
 ;   List of manufacturers and devices

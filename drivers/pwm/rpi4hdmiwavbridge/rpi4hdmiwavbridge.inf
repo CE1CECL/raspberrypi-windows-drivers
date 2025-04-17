@@ -1,7 +1,7 @@
 ; Copyright (c) Microsoft Corporation All Rights Reserved
 ;
 ; Abstract:
-;    INF file for installing the BCM2836 PWM Driver
+;    INF file for installing the RPI4 HDMI AUDIO BRIDGE
 ;
 
 [Version]
@@ -11,6 +11,7 @@ ClassGUID={4d36e97d-e325-11ce-bfc1-08002be10318}
 Provider=%ProviderString%
 CatalogFile=rpi4hdmiwavbridge.cat
 PnpLockdown=1
+
 
 [SourceDisksNames]
 1=%DiskDescription%
@@ -55,10 +56,10 @@ ServiceBinary = %10%\system32\drivers\rpi4hdmiwavbridge.sys
 [Strings]
 ProviderString="MS-IOT"
 MfgName="Microsoft"
-DiskDescription="BCM2836 PWM Driver Disk"
-rpi4hdmiwavbridge.DeviceDesc="BCM2836 PWM Controller"
+DiskDescription="Raspberry Pi 4 HDMI Audio Bridge Install Disk"
+rpi4hdmiwavbridge.DeviceDesc="Raspberry Pi 4 HDMI Audio Bridge"
 
-rpi4hdmiwavbridge.SvcDesc = "BCM2836 PWM Controller Driver"
+rpi4hdmiwavbridge.SvcDesc = "Raspberry Pi 4 HDMI Audio Bridge Driver"
 
 SERVICE_KERNEL_DRIVER   = 1
 SERVICE_SYSTEM_START    = 1

@@ -7,7 +7,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Inf Include="bcmemmc2.inx">
+    <Inf Include="bcmemmc2.inf">
       <Filter>Driver Files</Filter>
     </Inf>
   </ItemGroup>

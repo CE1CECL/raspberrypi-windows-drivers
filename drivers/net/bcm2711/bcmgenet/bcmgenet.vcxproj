@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <Inf Include="bcmgenet.inx" />
+    <Inf Include="bcmgenet.inf" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="bcmgenet_netadaptercx20.vcxproj">
@@ -35,7 +35,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
     <Configuration>Debug</Configuration>
-    <Platform Condition="'$(Platform)' == ''">Win32</Platform>
+    <Platform Condition="'$(Platform)' == ''">ARM64</Platform>
     <RootNamespace>bcmgenet</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

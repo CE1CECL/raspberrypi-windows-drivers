@@ -6,6 +6,7 @@ Provider=%ProviderString%
 CatalogFile=SDHostBRCME88C.cat
 PnpLockdown=1
 
+
 [SourceDisksNames]
 1 = Disk
 

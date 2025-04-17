@@ -12,6 +12,7 @@ Provider=%ProviderString%
 CatalogFile=bcm2836pwm.cat
 PnpLockdown=1
 
+
 [SourceDisksNames]
 1=%DiskDescription%
 

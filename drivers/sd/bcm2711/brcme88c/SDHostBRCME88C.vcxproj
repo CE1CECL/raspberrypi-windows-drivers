@@ -24,7 +24,7 @@
     <DriverType>WDM</DriverType>
     <TARGETNAME>$(MSBuildProjectName)</TARGETNAME>
     <DriverTargetPlatform>Universal</DriverTargetPlatform>
-    <Configuration Condition="'$(Configuration)' == ''">Debug</Configuration>
+    <Configuration Condition="'$(Configuration)' == ''">Release</Configuration>
     <Platform Condition="'$(Platform)' == ''">ARM64</Platform>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -156,7 +156,7 @@
     <ResourceCompile Include="SDHostBRCME88C.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Inf Include="SDHostBRCME88C.inx" />
+    <Inf Include="SDHostBRCME88C.inf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>

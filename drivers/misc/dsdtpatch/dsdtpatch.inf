@@ -1,0 +1,47 @@
+;/*++
+;
+;Copyright (c) 2021 Windows on Raspberry Project. All Rights Reserved.
+;
+;Module Name:
+;
+;    dsdtpatch.inf
+;
+;Abstract:
+;
+;    INF file for installing a DSDT table override that enables 
+;    experimental Bluetooth & analog audio functionality
+;    (as the changes are not yet mergeable into the upstream edk2-platforms repo)
+;
+;--*/
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = SYSTEM
+ClassGuid   = {4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider    = %ProviderString%
+PnpLockdown = 1
+CatalogFile = dsdtpatch.cat
+
+
+[DestinationDirs]
+DefaultDestDir = 11
+
+[SourceDisksNames]
+1 = %DiskId1%,,,""
+
+[SourceDisksFiles]
+ACPITABL.dat = 1,,
+
+;*****************************************
+; dsdtpatch Install Section
+;*****************************************
+
+[DefaultInstall.NT$ARCH$]
+CopyFiles = dsdtpatch.CopyFiles
+
+[dsdtpatch.CopyFiles]
+ACPITABL.dat
+
+[Strings]
+ProviderString = "Windows on Raspberry Project"
+DiskId1        = "DSDT Patch Installation Disk #1"

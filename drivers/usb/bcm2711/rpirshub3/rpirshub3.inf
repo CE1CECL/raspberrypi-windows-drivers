@@ -6,6 +6,7 @@ Provider = %ProviderString%
 CatalogFile = rpirshub3.cat
 PnpLockdown = 1
 
+
 [Manufacturer]
 %RPi% = RPi,NT$ARCH$.10.0
 

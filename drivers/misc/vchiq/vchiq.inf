@@ -18,6 +18,7 @@ Provider=%ProviderString%
 CatalogFile=vchiq.cat
 PnpLockdown=1
 
+
 [DestinationDirs]
 Drivers_Dir = 12
 VCFramework_Dir = 12

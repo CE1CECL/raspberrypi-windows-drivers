@@ -16,6 +16,7 @@ Provider=%ProviderString%
 CatalogFile=SerPL011.cat
 PnpLockdown=1
 
+
 [DestinationDirs]
 DefaultDestDir = 12
 
@@ -38,7 +39,7 @@ ExcludeFromSelect=*
 [MSFT.NT$ARCH$]
 ; DisplayName            Section       DeviceId
 ; -----------            -------       --------
-%SerPL011.DeviceDesc%= BCM2837_Inst, ACPI\BCM2837
+%SerPL011.DeviceDesc%= BCM2837_Inst, ACPI\BCM2887
 
 [BCM2837_Inst.NT]
 CopyFiles=Drivers_Dir
@@ -62,8 +63,10 @@ Dependencies   = SerCx2
 AddReg         = BCM2837_Service_Reg
 
 [BCM2837_Service_Reg]
-HKR,Parameters,UartFlowControl,0x00010001,0x00000000; 0:None, 1:HW, 2:SW
-HKR,Parameters,UartControlLines,0x00010001,0x00000000; 0x0200:OUT2, 0x0100:OUT1, 0x0080:RTS, 0x0040:CTS, 0x0020:DTR
+HKR,Parameters,UartClockHz,0x00010001,0x2DC6C00 ; 48Mhz
+HKR,Parameters,UartFlowControl,0x00010001,0x00000001; 0:None, 1:HW, 2:SW
+HKR,Parameters,UartControlLines,0x00010001,0x000000C0; 0x0200:OUT2, 0x0100:OUT1, 0x0080:RTS, 0x0040:CTS, 0x0020:DTR
+HKR,Parameters,MaxBaudRateBPS,0x00010001,0x2DC6C0 ; 3000000 BPS
 
 [Strings]
 ; localizable strings

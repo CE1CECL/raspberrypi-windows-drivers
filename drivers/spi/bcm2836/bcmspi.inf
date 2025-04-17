@@ -18,9 +18,8 @@ Signature="$WINDOWS NT$"
 Class=System
 ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
 Provider=%ProviderString%
-DriverVer=02/11/2015,10.0.10016.0
+
 CatalogFile = bcmspi.cat
-PnpLockdown=1
 
 [DestinationDirs]
 DefaultDestDir = 12
@@ -74,4 +73,3 @@ StdMfg = "(Standard system devices)"
 DiskId1 = "Broadcom SPI Controller Installation Disk #1"
 bcmspi.DeviceDesc = "Broadcom SPI Controller Driver"
 bcmspi.SVCDESC = "Broadcom SPI Controller Service"
-

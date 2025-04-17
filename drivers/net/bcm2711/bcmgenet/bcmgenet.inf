@@ -6,6 +6,7 @@ Provider                = %ProviderString%
 CatalogFile             = bcmgenet.cat
 PnpLockdown             = 1
 
+
 [ControlFlags]
 ExcludeFromSelect       = ACPI\BCM6E4E
 

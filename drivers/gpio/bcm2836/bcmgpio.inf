@@ -17,7 +17,7 @@ Class=System
 ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318}
 Provider=%ProviderString%
 CatalogFile=bcmgpio.cat
-PnpLockdown=1
+
 
 [SourceDisksNames]
 3426=windows cd
@@ -82,4 +82,3 @@ SERVICE_ERROR_CRITICAL = 3
 REG_EXPAND_SZ          = 0x00020000
 REG_DWORD              = 0x00010001
 REG_SZ                 = 0x00000000
-

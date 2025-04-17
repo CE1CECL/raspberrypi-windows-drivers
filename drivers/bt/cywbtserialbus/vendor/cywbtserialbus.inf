@@ -1,0 +1,95 @@
+;/*++
+;
+;Copyright (c) 2020 Mario Bălănică. All Rights Reserved.
+;Copyright (c) 2010 Microsoft Corporation. All rights Reserved.
+;
+;Module Name:
+;
+;    cywbtserialbus.inf
+;
+;Abstract:
+;
+;    INF file for installing the Cypress Bluetooth over UART Transport Driver.
+;
+;--*/
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = System
+ClassGuid   = {4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider    = %ProviderString%
+CatalogFile = cywbtserialbus.cat
+PnpLockdown = 1
+
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+[SourceDisksNames]
+1 = %DiskId1%,,,""
+
+[SourceDisksFiles]
+cywbtserialbus.sys = 1,,
+BCM4345C0.hcd      = 1,\fw,
+BCM43430A1.hcd     = 1,\fw,
+BCM4345C5.hcd      = 1,\fw,
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Manufacturer]
+%CY% = CywModels,NT$ARCH$
+
+;*****************************************
+; Cypress Serial Bus driver install section
+;*****************************************
+
+[CywModels.NT$ARCH$]
+%cywbtserialbus.DeviceDesc% = cywbtserialbus_Inst, ACPI\BCM2EA6
+
+[cywbtserialbus_Inst.NT]
+CopyFiles = cywbtserialbus.CopyFiles
+
+[cywbtserialbus.CopyFiles]
+cywbtserialbus.sys
+BCM4345C0.hcd
+BCM43430A1.hcd
+BCM4345C5.hcd
+
+[cywbtserialbus_Inst.NT.HW]
+AddReg = cywbtserialbus_Inst.NT.AddReg
+
+[cywbtserialbus_Inst.NT.AddReg]
+; Reference: http://msdn.microsoft.com/en-us/library/ff546320.aspx
+HKR,,DeviceCharacteristics,0x10001,0x0100      ; Use same security checks on relative opens
+; Reference: http://msdn.microsoft.com/en-us/library/windows/hardware/ff563667(v=vs.85).aspx
+HKR,,Security,,"D:P(A;;GA;;;BA)(A;;GA;;;SY)(A;;GA;;;LS)"   ; DACL Protected to allow generic-all access to built-in Admin group, system, and Local Service. 
+
+;-------------- Service installation
+[cywbtserialbus_Inst.NT.Services]
+AddService = cywbtserialbus,%SPSVCINST_ASSOCSERVICE%, cywbtserialbus_Service_Inst
+
+; -------------- cywbtserialbus driver install section
+[cywbtserialbus_Service_Inst]
+DisplayName    = %cywbtserialbus.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START 
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\cywbtserialbus.sys
+AddReg         = cywbtserialbus_Service_Inst.AddReg
+
+[cywbtserialbus_Service_Inst.AddReg]
+HKR, Parameters, BaudRate       ,0x10001, 0x2DC6C0 ; 3000000 baud
+HKR, Parameters, SkipFwDownload	,0x10001, 0x0
+
+[Strings]
+;Non-Localizable
+
+SPSVCINST_ASSOCSERVICE = 0x00000002
+
+;Localizable
+ProviderString             = "Windows on Raspberry Project"
+CY                         = "Cypress"
+DiskId1                    = "Cypress Bluetooth UART Transport Driver Installation Disk #1"
+cywbtserialbus.DeviceDesc  = "Cypress Bluetooth UART Transport Driver"
+cywbtserialbus.SVCDESC     = "Cypress Bluetooth UART Transport Driver"

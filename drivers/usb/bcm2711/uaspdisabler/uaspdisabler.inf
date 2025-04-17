@@ -1,0 +1,35 @@
+;/*++
+;
+;Copyright (c) 2021 Windows on Raspberry Project. All Rights Reserved.
+;
+;Module Name:
+;
+;    uaspdisabler.inf
+;
+;Abstract:
+;
+;    INF file for disabling UASP support (workaround USB 3.0 boot issues with rpiuxlft)
+;
+;--*/
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = SYSTEM
+ClassGuid   = {4D36E97D-E325-11CE-BFC1-08002BE10318}
+Provider    = %ProviderString%
+PnpLockdown = 1
+CatalogFile = uaspdisabler.cat
+
+
+;*****************************************
+; uaspdisabler Install Section
+;*****************************************
+
+[DefaultInstall.NT]
+AddReg = DefaultInstall.NT.AddReg
+
+[DefaultInstall.NT.AddReg]
+HKLM, "SYSTEM\ControlSet001\Services\UASPStor", ImagePath, 0x00020000, "\SystemRoot\System32\drivers\USBSTOR.SYS"
+
+[Strings]
+ProviderString = "Windows on Raspberry Project"

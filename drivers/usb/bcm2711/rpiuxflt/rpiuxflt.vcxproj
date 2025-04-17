@@ -46,7 +46,7 @@
     <Import Project="..\..\..\..\build\bsp.props" />
   </ImportGroup>
   <ItemGroup>
-    <Inf Include="rpiuxflt.inx" />
+    <Inf Include="rpiuxflt.inf" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rpiuxflt.h" />

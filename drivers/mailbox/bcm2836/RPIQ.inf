@@ -16,7 +16,7 @@ Class=System
 ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318}
 Provider=%ProviderString%
 CatalogFile=rpiq.cat
-PnpLockdown=1
+
 
 [DestinationDirs]
 DefaultDestDir = 12
@@ -67,4 +67,3 @@ rpiq.SVCDESC = "RPIQ Service"
 
 ; non-localizable strings
 SPSVCINST_ASSOCSERVICE= 0x00000002
-

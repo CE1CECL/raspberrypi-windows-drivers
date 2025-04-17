@@ -7,7 +7,7 @@ ClassGUID={a0a588a4-c46f-4b37-b7ea-c82fe89870c6}
 Provider=%ProviderString%
 CatalogFile=rpisdhc.cat
 BootCritical=1
-PnpLockdown=1
+
 
 [SourceDisksNames]
 3426=windows cd
@@ -26,7 +26,6 @@ rpisdhc.sys = 3426
 
 [ControlFlags]
 BasicDriverOk=*
-ExcludeFromSelect=*
 
 ; ///////////////////////////////////////////////////////////
 ;
@@ -162,3 +161,4 @@ REG_SZ                = 0x00000000
 ;
 ProviderString="MS-IOT"
 Msft="Microsoft"
+

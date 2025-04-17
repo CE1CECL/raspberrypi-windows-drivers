@@ -7,7 +7,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <Inf Include="rpirshub3.inx">
+    <Inf Include="rpirshub3.inf">
       <Filter>Driver Files</Filter>
     </Inf>
   </ItemGroup>

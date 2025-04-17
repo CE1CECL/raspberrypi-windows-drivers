@@ -18,9 +18,8 @@ Signature="$WINDOWS NT$"
 Class=System
 ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
 Provider=%ProviderString%
-DriverVer=02/11/2015,10.0.10016.0
+
 CatalogFile=bcmauxspi.cat
-PnpLockdown=1
 
 [DestinationDirs]
 DefaultDestDir = 12
@@ -44,6 +43,7 @@ bcmauxspi.sys  = 1,,
 ; ones on XP and later.
 [Standard.NT$ARCH$]
 %bcmauxspi.DeviceDesc%=bcmauxspi_Device,ACPI\BCM2839,ACPI\BCMSPI1
+%bcmauxspi.DeviceDesc%=bcmauxspi_Device,ACPI\BCM2840
 
 [bcmauxspi_Device.NT]
 CopyFiles=Drivers_Dir
@@ -76,4 +76,3 @@ ProviderString = "MS-IOT"
 DiskId1 = "Broadcom AUXSPI Controller Installation Disk #1"
 bcmauxspi.DeviceDesc = "Broadcom AUXSPI Controller"
 bcmauxspi.SVCDESC = "Broadcom AUXSPI Controller Driver"
-

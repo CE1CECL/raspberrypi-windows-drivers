@@ -2,7 +2,7 @@
 Signature="$Windows NT$"
 Class=MEDIA
 ClassGUID={4d36e96c-e325-11ce-bfc1-08002be10318}
-DriverVer = WILL_BE_FIXED_UP_BY_STAMPINF
+
 Provider=%ProviderString%
 CatalogFile=rpiwav.cat
 PnpLockdown=1
@@ -17,7 +17,7 @@ rpiwav.sys=222
 %MfgName%=MicrosoftDS,NT$ARCH$
 
 [MicrosoftDS.NT$ARCH$]
-%RPIWAV_SA.DeviceDesc%=RPIWAV_SA, Root\rpiwav
+%RPIWAV_SA.DeviceDesc%=RPIWAV_SA, ACPI\RPI73EA
 
 [DestinationDirs]
 RPIWAV_SA.CopyList=12 ; windows\system32\drivers
@@ -95,12 +95,6 @@ AddReg = AUDIOHW.AddReg
 HKR,,DeviceType,0x10001,0x0000001D
 ; SDDL_DEVOBJ_SYS_ALL_ADM_RWX_WORLD_RWX_RES_RWX
 HKR,,Security,,"D:P(A;;GA;;;SY)(A;;GRGWGX;;;BA)(A;;GRGWGX;;;WD)(A;;GRGWGX;;;RC)"
-
-[DeviceInstall32]
-AddDevice = ROOT\rpiwav\0000,,rpiwav_RootDevice_Inst
-
-[rpiwav_RootDevice_Inst]
-HardwareIds = ROOT\rpiwav
 
 ;======================================================
 ; WDF
