@@ -20,7 +20,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rpiwav", "..\..\drivers\aud
 		{1A0EEDCE-814F-4045-91BD-012E96D8F89F} = {1A0EEDCE-814F-4045-91BD-012E96D8F89F}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EndpointsCommon", "..\..\drivers\audio\bcm2836\EndpointsCommon\EndpointsCommon.vcxproj", "{1A0EEDCE-814F-4045-91BD-012E96D8F89F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rpiwavEndpointsCommon", "..\..\drivers\audio\bcm2836\rpiwavEndpointsCommon\rpiwavEndpointsCommon.vcxproj", "{1A0EEDCE-814F-4045-91BD-012E96D8F89F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "rpiwav", "rpiwav", "{5E0F66BD-F46A-410B-A693-E5958463B53F}"
 EndProject
@@ -66,11 +66,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SDHostBRCME88C", "..\..\dri
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rpirshub3", "..\..\drivers\usb\bcm2711\rpirshub3\rpirshub3.vcxproj", "{DFE53385-0150-401F-91D2-66587EF1927A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "rpi4hdmiwav", "rpi4hdmiwav", "{BC27DA96-9057-4233-8082-FCAA7AB30DF2}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rpi4hdmiwav", "..\..\drivers\audio\rpi4hdmiwav\rpi4hdmiwav\rpi4hdmiwav.vcxproj", "{0697D874-5BE1-4884-A62A-4D5772045F04}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E58E819D-A822-49A7-A98D-B7A7A9B0728E} = {E58E819D-A822-49A7-A98D-B7A7A9B0728E}
+	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EndpointsCommon", "..\..\drivers\audio\rpi4hdmiwav\EndpointsCommon\EndpointsCommon.vcxproj", "{E58E819D-A822-49A7-A98D-B7A7A9B0728E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rpi4hdmiwavEndpointsCommon", "..\..\drivers\audio\rpi4hdmiwav\rpi4hdmiwavEndpointsCommon\rpi4hdmiwavEndpointsCommon.vcxproj", "{E58E819D-A822-49A7-A98D-B7A7A9B0728E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "rpi4hdmiwav", "rpi4hdmiwav", "{BC27DA96-9057-4233-8082-FCAA7AB30DF2}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rpi4hdmiwavbridge", "..\..\drivers\pwm\rpi4hdmiwavbridge\rpi4hdmiwavbridge.vcxproj", "{2E48AFDC-ABB8-4B84-A7E2-EA8600D727CB}"
 EndProject

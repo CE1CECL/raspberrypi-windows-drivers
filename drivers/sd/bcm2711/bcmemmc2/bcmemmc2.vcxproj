@@ -24,8 +24,6 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2043AEDC-A745-4436-A13C-8079EDE147D6}</ProjectGuid>
     <TemplateGuid>{4605da2c-74a5-4865-98e1-152ef136825f}</TemplateGuid>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
     <Configuration>Debug</Configuration>
     <Platform Condition="'$(Platform)' == ''">ARM64</Platform>
     <RootNamespace>bcmemmc2</RootNamespace>

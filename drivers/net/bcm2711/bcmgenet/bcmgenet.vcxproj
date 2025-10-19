@@ -32,8 +32,6 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{5C7944BC-EB3A-4866-B80E-E158CC3C2E20}</ProjectGuid>
     <TemplateGuid>{4605da2c-74a5-4865-98e1-152ef136825f}</TemplateGuid>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
     <Configuration>Debug</Configuration>
     <Platform Condition="'$(Platform)' == ''">ARM64</Platform>
     <RootNamespace>bcmgenet</RootNamespace>

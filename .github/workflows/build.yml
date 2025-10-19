@@ -2,33 +2,19 @@ name: build
 
 on:
   workflow_dispatch: 
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
-  schedule:
-    - cron: '0 0 * * *'
     
 env:
   SOLUTION_FILE_PATH: .\build\bcm2836\buildbcm2836.sln
 
 jobs:
   build:
-    runs-on: windows-2019
+    runs-on: windows-latest
     strategy:
       matrix:
         BUILD_CONFIGURATION: [Release, Debug]
         PLATFORM: [ARM, ARM64]
     steps:
     - uses: actions/checkout@v4.2.2
-
-    - name: Set up WDK version 2004 for bcmgenet backwards compatibility
-      run: |
-        $wdkSetupPath = "$Env:TEMP\wdksetup.exe"
-        (New-Object Net.WebClient).DownloadFile('https://go.microsoft.com/fwlink/?linkid=2128854', $wdkSetupPath)
-        Start-Process -FilePath $wdkSetupPath -ArgumentList "/quiet" -NoNewWindow -Wait
 
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v2

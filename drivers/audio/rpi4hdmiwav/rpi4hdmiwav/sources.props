@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ImportFilePath_290EDE878A0F4ED5890C231CF5E9A1BE Condition="'$(OVERRIDE_ImportFilePath_290EDE878A0F4ED5890C231CF5E9A1BE)'!='true'">..\sources.inc.props</ImportFilePath_290EDE878A0F4ED5890C231CF5E9A1BE>
     <ImportFilePath_290EDE878A0F4ED5890C231CF5E9A1BE Condition="(!$([System.IO.Path]::IsPathRooted('..\sources.inc.props'))) And ('$(OVERRIDE_ImportFilePath_290EDE878A0F4ED5890C231CF5E9A1BE)'!='true')">$([System.IO.Path]::Combine($(MSBuildProjectDirectory),'..\sources.inc.props'))</ImportFilePath_290EDE878A0F4ED5890C231CF5E9A1BE>
@@ -14,7 +14,7 @@
     <MINIMUM_NT_TARGET_VERSION Condition="'$(OVERRIDE_MINIMUM_NT_TARGET_VERSION)'!='true'">$(_NT_TARGET_VERSION_WIN10)</MINIMUM_NT_TARGET_VERSION>
     <KMDF_VERSION_MAJOR Condition="'$(OVERRIDE_KMDF_VERSION_MAJOR)'!='true'">1</KMDF_VERSION_MAJOR>
     <KMDF_VERSION_MINOR Condition="'$(OVERRIDE_KMDF_VERSION_MINOR)'!='true'">13</KMDF_VERSION_MINOR>
-    <INCLUDES Condition="'$(OVERRIDE_INCLUDES)'!='true'">$(INCLUDES);          ..\EndpointsCommon;          ..\..\..\PWM\drivers\RPi2;          ..\EndpointsCommon;</INCLUDES>
+    <INCLUDES Condition="'$(OVERRIDE_INCLUDES)'!='true'">$(INCLUDES);          ..\rpi4hdmiwavEndpointsCommon;          ..\..\..\PWM\drivers\RPi2;          ..\rpi4hdmiwavEndpointsCommon;</INCLUDES>
     <SOURCES Condition="'$(OVERRIDE_SOURCES)'!='true'">$(SOURCES)</SOURCES>
     <DDK_NO_PACKAGE_PROJECT Condition="'$(OVERRIDE_DDK_NO_PACKAGE_PROJECT)'!='true'">0</DDK_NO_PACKAGE_PROJECT>
     <DDK_INCLUDE_PACKAGE_PROJECT Condition="'$(OVERRIDE_DDK_INCLUDE_PACKAGE_PROJECT)'!='true'">1</DDK_INCLUDE_PACKAGE_PROJECT>
