@@ -24,16 +24,14 @@ rpisdhc.sys = 3426
 [Manufacturer]
 %Generic%=Generic,NT$ARCH$
 
-[ControlFlags]
-BasicDriverOk=*
-
 ; ///////////////////////////////////////////////////////////
 ;
 ; Generic Device
 ;
 
 [Generic.NT$ARCH$]
-%ACPI\SDHST.DeviceDesc%=SDHost, ACPI\BCM2855, ACPI\SDHST
+%ACPI\SDHST.DeviceDesc%=SDHost, ACPI\BCM2855
+%ACPI\SDHST.DeviceDesc%=SDHost, ACPI\SDHST
 ; ///////////////////////////////////////////////////////////
 ;
 ; Non-Generic Devices

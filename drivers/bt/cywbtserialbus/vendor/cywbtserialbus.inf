@@ -19,7 +19,6 @@ Class       = System
 ClassGuid   = {4D36E97D-E325-11CE-BFC1-08002BE10318}
 Provider    = %ProviderString%
 CatalogFile = cywbtserialbus.cat
-PnpLockdown = 1
 
 
 [DestinationDirs]
@@ -33,9 +32,6 @@ cywbtserialbus.sys = 1,,
 BCM4345C0.hcd      = 1,\fw,
 BCM43430A1.hcd     = 1,\fw,
 BCM4345C5.hcd      = 1,\fw,
-
-[ControlFlags]
-ExcludeFromSelect = *
 
 [Manufacturer]
 %CY% = CywModels,NT$ARCH$

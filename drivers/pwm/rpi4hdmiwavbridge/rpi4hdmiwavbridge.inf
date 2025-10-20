@@ -10,7 +10,6 @@ Class=SYSTEM
 ClassGUID={4d36e97d-e325-11ce-bfc1-08002be10318}
 Provider=%ProviderString%
 CatalogFile=rpi4hdmiwavbridge.cat
-PnpLockdown=1
 
 
 [SourceDisksNames]
@@ -26,12 +25,10 @@ rpi4hdmiwavbridge.CopyList = 10,system32\drivers
 [Manufacturer]
 %MfgName%=rpi4hdmiwavbridge_Driver,NT$ARCH$
 
-; Excluding drivers from the "Add New Hardware" list.
-[ControlFlags]
-ExcludeFromSelect = *
-
 [rpi4hdmiwavbridge_Driver.NT$ARCH$]
+; ACPITABL.dat
 %rpi4hdmiwavbridge.DeviceDesc%=rpi4hdmiwavbridge, ACPI\RPI73EB
+; ACPITABL.dat
 
 [rpi4hdmiwavbridge]
 CopyFiles=rpi4hdmiwavbridge.CopyList

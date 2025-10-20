@@ -8,7 +8,6 @@ Class = USB
 ClassGUID = {36FC9E60-C465-11CF-8056-444553540000}
 Provider = %ProviderString%
 CatalogFile = rpiuxflt.cat
-PnpLockdown = 1
 
 
 [SourceDisksNames]
@@ -24,7 +23,10 @@ DefaultDestDir = 12
 %RPi% = RPi,NT$ARCH$.10.0
 
 [RPi.NT$ARCH$.10.0]
+%rpixhci.DeviceDesc% = FilterInstall, ACPI\PNP0D10
+; ACPITABL.dat
 %rpixhci.DeviceDesc% = FilterInstall, ACPI\RPI0D10
+; ACPITABL.dat
 
 [FilterInstall.NT]
 Include = usbxhci.inf
@@ -51,8 +53,12 @@ Needs = Generic.Install.NT.WMI
 ; Workaround to set device flags as used in usb\DisableFlags.ps1 from the HLK.
 ; Use flags normally set for a 1106:3483 device enumerated by PCI plus Use32BitRegisterAccess.
 ; The !usb3kd.xhci_capability debugger extension command lists names of active flags.
+HKLM,System\CurrentControlSet\Control\Compatibility\Device\USBXHCI:ACPI!VEN_PNP&DEV_0D10,\
+    USBXHCI,0xB0001,0x70000040003
+; ACPITABL.dat
 HKLM,System\CurrentControlSet\Control\Compatibility\Device\USBXHCI:ACPI!VEN_RPI&DEV_0D10,\
     USBXHCI,0xB0001,0x70000000003
+; ACPITABL.dat
 ; Fast startup may prevent Windows from applying the filter driver if the 3 GB limit was
 ; active before Windows rebooted. This disables fast startup.
 HKLM,System\CurrentControlSet\Control\Session Manager\Power,\

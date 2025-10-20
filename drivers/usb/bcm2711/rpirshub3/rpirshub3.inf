@@ -4,7 +4,6 @@ Class = USB
 ClassGUID = {36FC9E60-C465-11CF-8056-444553540000}
 Provider = %ProviderString%
 CatalogFile = rpirshub3.cat
-PnpLockdown = 1
 
 
 [Manufacturer]

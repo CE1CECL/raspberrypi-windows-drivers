@@ -42,7 +42,8 @@ bcmspi.sys  = 1,,
 ; Decorated model section take precedence over undecorated 
 ; ones on XP and later.
 [Standard.NT$ARCH$]
-%bcmspi.DeviceDesc%=bcmspi_Device,ACPI\BCM2838,ACPI\BCMSPI0
+%bcmspi.DeviceDesc%=bcmspi_Device,ACPI\BCM2838
+%bcmspi.DeviceDesc%=bcmspi_Device,ACPI\BCMSPI0
 
 [bcmspi_Device.NT]
 CopyFiles=Drivers_Dir

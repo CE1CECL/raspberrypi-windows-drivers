@@ -22,13 +22,9 @@ Class=Ports
 ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
 CatalogFile=pi_miniuart.cat
 Provider=%ProviderString%
-PnpLockdown=1
 
 
 ; ================= Device Install section =====================
-
-[ControlFlags]
-ExcludeFromSelect=*
 
 [Manufacturer]
 %MSFT%=MSFT,NT$ARCH$

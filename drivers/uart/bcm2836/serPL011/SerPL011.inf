@@ -14,7 +14,6 @@ Class=System
 ClassGuid={4D36E97D-E325-11CE-BFC1-08002BE10318}
 Provider=%ProviderString%
 CatalogFile=SerPL011.cat
-PnpLockdown=1
 
 
 [DestinationDirs]
@@ -26,9 +25,6 @@ DefaultDestDir = 12
 [SourceDisksFiles]
 SerPL011.sys  = 1,,
 
-[ControlFlags]
-ExcludeFromSelect=*
-
 ;*****************************************
 ; SerPL011 Install Section
 ;*****************************************
@@ -39,7 +35,10 @@ ExcludeFromSelect=*
 [MSFT.NT$ARCH$]
 ; DisplayName            Section       DeviceId
 ; -----------            -------       --------
+%SerPL011.DeviceDesc%= BCM2837_Inst, ACPI\BCM2837
+; ACPITABL.dat
 %SerPL011.DeviceDesc%= BCM2837_Inst, ACPI\BCM2887
+; ACPITABL.dat
 
 [BCM2837_Inst.NT]
 CopyFiles=Drivers_Dir

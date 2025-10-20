@@ -10,7 +10,6 @@ Class=SYSTEM
 ClassGUID={4d36e97d-e325-11ce-bfc1-08002be10318}
 Provider=%ProviderString%
 CatalogFile=bcm2836pwm.cat
-PnpLockdown=1
 
 
 [SourceDisksNames]
@@ -25,10 +24,6 @@ bcm2836pwm.CopyList = 10,system32\drivers
 
 [Manufacturer]
 %MfgName%=bcm2836pwm_Driver,NT$ARCH$
-
-; Excluding drivers from the "Add New Hardware" list.
-[ControlFlags]
-ExcludeFromSelect = *
 
 [bcm2836pwm_Driver.NT$ARCH$]
 %bcm2836pwm.DeviceDesc%=bcm2836pwm, ACPI\BCM2844

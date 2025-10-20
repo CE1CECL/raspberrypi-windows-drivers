@@ -28,10 +28,6 @@ bcmgpio.sys = 3426
 [DestinationDirs]
 DefaultDestDir = 12
 
-[ControlFlags]
-BasicDriverOk = *
-ExcludeFromSelect = *
-
 ;******************************************
 ; BCMGPIO Client driver Install Section
 ;******************************************
@@ -40,7 +36,8 @@ ExcludeFromSelect = *
 %MSFT%=Microsoft,NT$ARCH$
 
 [Microsoft.NT$ARCH$]
-%GPIO.DeviceDesc% = GPIO_Inst,ACPI\BCM2845,ACPI\BCMGPIO
+%GPIO.DeviceDesc% = GPIO_Inst,ACPI\BCM2845
+%GPIO.DeviceDesc% = GPIO_Inst,ACPI\BCMGPIO
 
 [GPIO_Inst.NT]
 Copyfiles = GPIOCopyFiles
