@@ -1,0 +1,16 @@
+--- DSDT_v0.12...v0.15.dsl	2025-10-31 12:04:49.402102300 -0400
++++ DSDT_v0.16...v0.17.dsl	2025-10-31 12:04:49.448980700 -0400
+@@ -1057,7 +1057,7 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+             {
+                 Name (_HID, "BCM2EA6")  // _HID: Hardware ID
+                 Name (_CID, "BCM2EA6")  // _CID: Compatible ID
+-                Name (URIU, 0x01)
++                Name (URIU, One)
+                 Method (_STA, 0, NotSerialized)  // _STA: Status
+                 {
+                     Return (0x0F)
+@@ -1660,4 +1660,3 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+         }
+     }
+ }
+-

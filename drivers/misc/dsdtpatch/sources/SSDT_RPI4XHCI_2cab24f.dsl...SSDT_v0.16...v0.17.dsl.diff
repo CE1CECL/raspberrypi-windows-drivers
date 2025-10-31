@@ -1,0 +1,43 @@
+--- SSDT_RPI4XHCI_2cab24f.dsl	2025-10-31 12:20:54.807533500 -0400
++++ SSDT_v0.16...v0.17.dsl	2025-10-31 12:04:49.590427600 -0400
+@@ -17,10 +17,10 @@ DefinitionBlock ("", "SSDT", 5, "RPIFDN"
+                         0x0000000600000000, // Range Maximum
+                         0x0000000000000000, // Translation Offset
+                         0x0000000000000001, // Length
+-                        ,, _Y00, AddressRangeMemory, TypeStatic)
++                        ,, _Y2C, AddressRangeMemory, TypeStatic)
+                 })
+-                CreateQWordField (RBUF, \_SB.SCB0._CRS._Y00._MAX, MMBE)  // _MAX: Maximum Base Address
+-                CreateQWordField (RBUF, \_SB.SCB0._CRS._Y00._LEN, MMLE)  // _LEN: Length
++                CreateQWordField (RBUF, \_SB.SCB0._CRS._Y2C._MAX, MMBE)  // _MAX: Maximum Base Address
++                CreateQWordField (RBUF, \_SB.SCB0._CRS._Y2C._LEN, MMLE)  // _LEN: Length
+                 MMBE += 0x0FFF
+                 MMLE += 0x0FFF
+                 Return (RBUF) /* \_SB_.SCB0._CRS.RBUF */
+@@ -38,7 +38,7 @@ DefinitionBlock ("", "SSDT", 5, "RPIFDN"
+             })
+             Device (XHC0)
+             {
+-                Name (_HID, "PNP0D10" /* XHCI USB Controller with debug */)  // _HID: Hardware ID
++                Name (_HID, "RPI0D10")  // _HID: Hardware ID
+                 Name (_UID, Zero)  // _UID: Unique ID
+                 Name (_CCA, Zero)  // _CCA: Cache Coherency Attribute
+                 Method (_CRS, 0, Serialized)  // _CRS: Current Resource Settings
+@@ -51,14 +51,14 @@ DefinitionBlock ("", "SSDT", 5, "RPIFDN"
+                             0x0000000600000000, // Range Maximum
+                             0x0000000000000000, // Translation Offset
+                             0x0000000000000001, // Length
+-                            ,, _Y01, AddressRangeMemory, TypeStatic)
++                            ,, _Y2D, AddressRangeMemory, TypeStatic)
+                         Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                         {
+                             0x000000AF,
+                         }
+                     })
+-                    CreateQWordField (RBUF, \_SB.SCB0.XHC0._CRS._Y01._MAX, MMBE)  // _MAX: Maximum Base Address
+-                    CreateQWordField (RBUF, \_SB.SCB0.XHC0._CRS._Y01._LEN, MMLE)  // _LEN: Length
++                    CreateQWordField (RBUF, \_SB.SCB0.XHC0._CRS._Y2D._MAX, MMBE)  // _MAX: Maximum Base Address
++                    CreateQWordField (RBUF, \_SB.SCB0.XHC0._CRS._Y2D._LEN, MMLE)  // _LEN: Length
+                     MMBE += 0x0FFF
+                     MMLE += 0x0FFF
+                     Return (RBUF) /* \_SB_.SCB0.XHC0._CRS.RBUF */

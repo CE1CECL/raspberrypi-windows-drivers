@@ -1,0 +1,589 @@
+--- DSDT_RPI_2cab24f.dsl	2025-10-31 12:34:34.071491000 -0400
++++ DSDT_v0.16...v0.17.dsl	2025-10-31 12:04:49.448980700 -0400
+@@ -277,6 +277,13 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                         0x0000000000000000, // Translation Offset
+                         0x0000000000000001, // Length
+                         ,, _Y15, AddressRangeMemory, TypeStatic)
++                    QWordMemory (ResourceProducer, PosDecode, MinFixed, MaxFixed, NonCacheable, ReadWrite,
++                        0x0000000000000000, // Granularity
++                        0x0000000000000000, // Range Minimum
++                        0x0000000000000000, // Range Maximum
++                        0x0000000000000000, // Translation Offset
++                        0x0000000000000001, // Length
++                        ,, _Y16, AddressRangeMemory, TypeStatic)
+                 })
+                 CreateQWordField (RBUF, \_SB.GDV0._CRS._Y00._MIN, MI01)  // _MIN: Minimum Base Address
+                 CreateQWordField (RBUF, \_SB.GDV0._CRS._Y00._MAX, MA01)  // _MAX: Maximum Base Address
+@@ -356,60 +363,66 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                 LE15 = 0x40
+                 MI15 = 0xFE215080
+                 MA15 = (MI15 + (LE15 - One))
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y0D._MIN, MI17)  // _MIN: Minimum Base Address
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y0D._MAX, MA17)  // _MAX: Maximum Base Address
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y0D._LEN, LE17)  // _LEN: Length
+-                LE17 = 0x0100
+-                MI17 = 0xFE007B00
+-                MA17 = (MI17 + (LE17 - One))
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y0E._MIN, MI18)  // _MIN: Minimum Base Address
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y0E._MAX, MA18)  // _MAX: Maximum Base Address
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y0E._LEN, LE18)  // _LEN: Length
+-                LE18 = 0x28
+-                MI18 = 0xFE20C000
+-                MA18 = (MI18 + (LE18 - One))
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y0F._MIN, MI19)  // _MIN: Minimum Base Address
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y0F._MAX, MA19)  // _MAX: Maximum Base Address
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y0F._LEN, LE19)  // _LEN: Length
+-                MI19 = 0x7E20C000
+-                LE19 = 0x28
+-                MA19 = (MI19 + (LE19 - One))
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y10._MIN, MI20)  // _MIN: Minimum Base Address
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y10._MAX, MA20)  // _MAX: Maximum Base Address
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y10._LEN, LE20)  // _LEN: Length
+-                MI20 = 0xFF20C000
+-                LE20 = 0x28
+-                MA20 = (MI20 + (LE20 - One))
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y11._MIN, MI21)  // _MIN: Minimum Base Address
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y11._MAX, MA21)  // _MAX: Maximum Base Address
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y11._LEN, LE21)  // _LEN: Length
+-                LE21 = 0x08
+-                MI21 = 0xFE1010A0
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y0D._MIN, MI21)  // _MIN: Minimum Base Address
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y0D._MAX, MA21)  // _MAX: Maximum Base Address
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y0D._LEN, LE21)  // _LEN: Length
++                LE21 = 0x0100
++                MI21 = 0xFE007000
+                 MA21 = (MI21 + (LE21 - One))
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y12._MIN, MI22)  // _MIN: Minimum Base Address
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y12._MAX, MA22)  // _MAX: Maximum Base Address
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y12._LEN, LE22)  // _LEN: Length
+-                LE22 = 0x1000
+-                MI22 = 0xFE201000
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y0E._MIN, MI22)  // _MIN: Minimum Base Address
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y0E._MAX, MA22)  // _MAX: Maximum Base Address
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y0E._LEN, LE22)  // _LEN: Length
++                LE22 = 0x28
++                MI22 = 0xFE20C800
+                 MA22 = (MI22 + (LE22 - One))
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y13._MIN, MI23)  // _MIN: Minimum Base Address
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y13._MAX, MA23)  // _MAX: Maximum Base Address
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y13._LEN, LE23)  // _LEN: Length
+-                LE23 = 0x70
+-                MI23 = 0xFE215000
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y0F._MIN, MI23)  // _MIN: Minimum Base Address
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y0F._MAX, MA23)  // _MAX: Maximum Base Address
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y0F._LEN, LE23)  // _LEN: Length
++                MI23 = 0x7E20C800
++                LE23 = 0x28
+                 MA23 = (MI23 + (LE23 - One))
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y14._MIN, MI24)  // _MIN: Minimum Base Address
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y14._MAX, MA24)  // _MAX: Maximum Base Address
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y14._LEN, LE24)  // _LEN: Length
+-                LE24 = 0x0100
+-                MI24 = 0xFE300000
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y10._MIN, MI24)  // _MIN: Minimum Base Address
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y10._MAX, MA24)  // _MAX: Maximum Base Address
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y10._LEN, LE24)  // _LEN: Length
++                MI24 = 0xC0000000
++                LE24 = One
+                 MA24 = (MI24 + (LE24 - One))
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y15._MIN, MI25)  // _MIN: Minimum Base Address
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y15._MAX, MA25)  // _MAX: Maximum Base Address
+-                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y15._LEN, LE25)  // _LEN: Length
+-                LE25 = 0x0100
+-                MI25 = 0xFE202000
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y11._MIN, MI25)  // _MIN: Minimum Base Address
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y11._MAX, MA25)  // _MAX: Maximum Base Address
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y11._LEN, LE25)  // _LEN: Length
++                LE25 = 0x08
++                MI25 = 0xFE1010A0
+                 MA25 = (MI25 + (LE25 - One))
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y12._MIN, MI26)  // _MIN: Minimum Base Address
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y12._MAX, MA26)  // _MAX: Maximum Base Address
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y12._LEN, LE26)  // _LEN: Length
++                LE26 = 0x1000
++                MI26 = 0xFE201000
++                MA26 = (MI26 + (LE26 - One))
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y13._MIN, MI27)  // _MIN: Minimum Base Address
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y13._MAX, MA27)  // _MAX: Maximum Base Address
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y13._LEN, LE27)  // _LEN: Length
++                LE27 = 0x70
++                MI27 = 0xFE215000
++                MA27 = (MI27 + (LE27 - One))
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y14._MIN, MI28)  // _MIN: Minimum Base Address
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y14._MAX, MA28)  // _MAX: Maximum Base Address
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y14._LEN, LE28)  // _LEN: Length
++                LE28 = 0x0100
++                MI28 = 0xFE300000
++                MA28 = (MI28 + (LE28 - One))
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y15._MIN, MI29)  // _MIN: Minimum Base Address
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y15._MAX, MA29)  // _MAX: Maximum Base Address
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y15._LEN, LE29)  // _LEN: Length
++                LE29 = 0x0100
++                MI29 = 0xFE202000
++                MA29 = (MI29 + (LE29 - One))
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y16._MIN, MI30)  // _MIN: Minimum Base Address
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y16._MAX, MA30)  // _MAX: Maximum Base Address
++                CreateQWordField (RBUF, \_SB.GDV0._CRS._Y16._LEN, LE30)  // _LEN: Length
++                LE30 = 0x0100
++                MI30 = 0xFE007500
++                MA30 = (MI30 + (LE30 - One))
+                 Return (RBUF) /* \_SB_.GDV0._CRS.RBUF */
+             }
+ 
+@@ -439,7 +452,7 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                     Memory32Fixed (ReadWrite,
+                         0x00000000,         // Address Base
+                         0x00010000,         // Address Length
+-                        _Y16)
++                        _Y17)
+                     Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                     {
+                         0x00000069,
+@@ -447,7 +460,7 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                 })
+                 Method (_CRS, 0, Serialized)  // _CRS: Current Resource Settings
+                 {
+-                    CreateDWordField (RBUF, \_SB.GDV0.USB0._Y16._BAS, RBAS)  // _BAS: Base Address
++                    CreateDWordField (RBUF, \_SB.GDV0.USB0._Y17._BAS, RBAS)  // _BAS: Base Address
+                     RBAS = 0xFE980000
+                     Return (RBUF) /* \_SB_.GDV0.USB0.RBUF */
+                 }
+@@ -469,7 +482,7 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                     Memory32Fixed (ReadWrite,
+                         0x00000000,         // Address Base
+                         0x00001000,         // Address Length
+-                        _Y17)
++                        _Y18)
+                     Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                     {
+                         0x0000002A,
+@@ -477,11 +490,11 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                     Memory32Fixed (ReadWrite,
+                         0x00000000,         // Address Base
+                         0x00006000,         // Address Length
+-                        _Y18)
++                        _Y19)
+                     Memory32Fixed (ReadWrite,
+                         0x00000000,         // Address Base
+                         0x00000100,         // Address Length
+-                        _Y19)
++                        _Y1A)
+                     Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                     {
+                         0x0000004A,
+@@ -489,11 +502,11 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                     Memory32Fixed (ReadWrite,
+                         0x00000000,         // Address Base
+                         0x00000600,         // Address Length
+-                        _Y1A)
++                        _Y1B)
+                     Memory32Fixed (ReadWrite,
+                         0x00000000,         // Address Base
+                         0x00000100,         // Address Length
+-                        _Y1B)
++                        _Y1C)
+                     I2cSerialBusV2 (0x0050, ControllerInitiated, 0x000186A0,
+                         AddressingMode7Bit, "\\_SB.GDV0.I2C2",
+                         0x00, ResourceConsumer, , Exclusive,
+@@ -505,15 +518,15 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                 })
+                 Method (_CRS, 0, Serialized)  // _CRS: Current Resource Settings
+                 {
+-                    CreateDWordField (RBUF, \_SB.GDV0.GPU0._Y17._BAS, RB01)  // _BAS: Base Address
++                    CreateDWordField (RBUF, \_SB.GDV0.GPU0._Y18._BAS, RB01)  // _BAS: Base Address
+                     RB01 = 0xFEC00000
+-                    CreateDWordField (RBUF, \_SB.GDV0.GPU0._Y18._BAS, RB02)  // _BAS: Base Address
++                    CreateDWordField (RBUF, \_SB.GDV0.GPU0._Y19._BAS, RB02)  // _BAS: Base Address
+                     RB02 = 0xFE400000
+-                    CreateDWordField (RBUF, \_SB.GDV0.GPU0._Y19._BAS, RB05)  // _BAS: Base Address
++                    CreateDWordField (RBUF, \_SB.GDV0.GPU0._Y1A._BAS, RB05)  // _BAS: Base Address
+                     RB05 = 0xFE807000
+-                    CreateDWordField (RBUF, \_SB.GDV0.GPU0._Y1A._BAS, RB06)  // _BAS: Base Address
++                    CreateDWordField (RBUF, \_SB.GDV0.GPU0._Y1B._BAS, RB06)  // _BAS: Base Address
+                     RB06 = 0xFE902000
+-                    CreateDWordField (RBUF, \_SB.GDV0.GPU0._Y1B._BAS, RB07)  // _BAS: Base Address
++                    CreateDWordField (RBUF, \_SB.GDV0.GPU0._Y1C._BAS, RB07)  // _BAS: Base Address
+                     RB07 = 0xFE808000
+                     Return (RBUF) /* \_SB_.GDV0.GPU0.RBUF */
+                 }
+@@ -573,7 +586,7 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                     Memory32Fixed (ReadWrite,
+                         0x00000000,         // Address Base
+                         0x00000024,         // Address Length
+-                        _Y1C)
++                        _Y1D)
+                     Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                     {
+                         0x00000041,
+@@ -581,7 +594,7 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                 })
+                 Method (_CRS, 0, Serialized)  // _CRS: Current Resource Settings
+                 {
+-                    CreateDWordField (RBUF, \_SB.GDV0.RPIQ._Y1C._BAS, RBAS)  // _BAS: Base Address
++                    CreateDWordField (RBUF, \_SB.GDV0.RPIQ._Y1D._BAS, RBAS)  // _BAS: Base Address
+                     RBAS = 0xFE00B880
+                     Return (RBUF) /* \_SB_.GDV0.RPIQ.RBUF */
+                 }
+@@ -607,7 +620,7 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                     Memory32Fixed (ReadWrite,
+                         0x00000000,         // Address Base
+                         0x00000010,         // Address Length
+-                        _Y1D)
++                        _Y1E)
+                     Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                     {
+                         0x00000042,
+@@ -615,7 +628,7 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                 })
+                 Method (_CRS, 0, Serialized)  // _CRS: Current Resource Settings
+                 {
+-                    CreateDWordField (RBUF, \_SB.GDV0.VCIQ._Y1D._BAS, RBAS)  // _BAS: Base Address
++                    CreateDWordField (RBUF, \_SB.GDV0.VCIQ._Y1E._BAS, RBAS)  // _BAS: Base Address
+                     RBAS = 0xFE00B840
+                     Return (RBUF) /* \_SB_.GDV0.VCIQ.RBUF */
+                 }
+@@ -653,7 +666,7 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                     Memory32Fixed (ReadWrite,
+                         0x00000000,         // Address Base
+                         0x000000B4,         // Address Length
+-                        _Y1E)
++                        _Y1F)
+                     Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, ,, )
+                     {
+                         0x00000091,
+@@ -664,7 +677,7 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                 })
+                 Method (_CRS, 0, Serialized)  // _CRS: Current Resource Settings
+                 {
+-                    CreateDWordField (RBUF, \_SB.GDV0.GPI0._Y1E._BAS, RBAS)  // _BAS: Base Address
++                    CreateDWordField (RBUF, \_SB.GDV0.GPI0._Y1F._BAS, RBAS)  // _BAS: Base Address
+                     RBAS = 0xFE200000
+                     Return (RBUF) /* \_SB_.GDV0.GPI0.RBUF */
+                 }
+@@ -686,7 +699,7 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                     Memory32Fixed (ReadWrite,
+                         0x00000000,         // Address Base
+                         0x00000020,         // Address Length
+-                        _Y1F)
++                        _Y20)
+                     Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, ,, )
+                     {
+                         0x00000095,
+@@ -700,7 +713,7 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                 })
+                 Method (_CRS, 0, Serialized)  // _CRS: Current Resource Settings
+                 {
+-                    CreateDWordField (RBUF, \_SB.GDV0.I2C1._Y1F._BAS, RBAS)  // _BAS: Base Address
++                    CreateDWordField (RBUF, \_SB.GDV0.I2C1._Y20._BAS, RBAS)  // _BAS: Base Address
+                     RBAS = 0xFE804000
+                     Return (RBUF) /* \_SB_.GDV0.I2C1.RBUF */
+                 }
+@@ -722,7 +735,7 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                     Memory32Fixed (ReadWrite,
+                         0x00000000,         // Address Base
+                         0x00000020,         // Address Length
+-                        _Y20)
++                        _Y21)
+                     Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, ,, )
+                     {
+                         0x00000095,
+@@ -730,7 +743,7 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                 })
+                 Method (_CRS, 0, Serialized)  // _CRS: Current Resource Settings
+                 {
+-                    CreateDWordField (RBUF, \_SB.GDV0.I2C2._Y20._BAS, RBAS)  // _BAS: Base Address
++                    CreateDWordField (RBUF, \_SB.GDV0.I2C2._Y21._BAS, RBAS)  // _BAS: Base Address
+                     RBAS = 0xFE805000
+                     Return (RBUF) /* \_SB_.GDV0.I2C2.RBUF */
+                 }
+@@ -752,7 +765,7 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                     Memory32Fixed (ReadWrite,
+                         0x00000000,         // Address Base
+                         0x00000020,         // Address Length
+-                        _Y21)
++                        _Y22)
+                     Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, ,, )
+                     {
+                         0x00000096,
+@@ -777,7 +790,7 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                 })
+                 Method (_CRS, 0, Serialized)  // _CRS: Current Resource Settings
+                 {
+-                    CreateDWordField (RBUF, \_SB.GDV0.SPI0._Y21._BAS, RBAS)  // _BAS: Base Address
++                    CreateDWordField (RBUF, \_SB.GDV0.SPI0._Y22._BAS, RBAS)  // _BAS: Base Address
+                     RBAS = 0xFE204000
+                     Return (RBUF) /* \_SB_.GDV0.SPI0.RBUF */
+                 }
+@@ -803,7 +816,7 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                     Memory32Fixed (ReadWrite,
+                         0x00000000,         // Address Base
+                         0x00000040,         // Address Length
+-                        _Y22)
++                        _Y23)
+                     Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, ,, )
+                     {
+                         0x0000007D,
+@@ -823,17 +836,17 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                 })
+                 Method (_CRS, 0, Serialized)  // _CRS: Current Resource Settings
+                 {
+-                    CreateDWordField (RBUF, \_SB.GDV0.SPI1._Y22._BAS, RBAS)  // _BAS: Base Address
++                    CreateDWordField (RBUF, \_SB.GDV0.SPI1._Y23._BAS, RBAS)  // _BAS: Base Address
+                     RBAS = 0xFE215080
+                     Return (RBUF) /* \_SB_.GDV0.SPI1.RBUF */
+                 }
+             }
+ 
+-            Device (PWM0)
++            Device (PWM1)
+             {
+                 Name (_HID, "BCM2844")  // _HID: Hardware ID
+                 Name (_CID, "BCM2844")  // _CID: Compatible ID
+-                Name (_UID, Zero)  // _UID: Unique ID
++                Name (_UID, One)  // _UID: Unique ID
+                 Name (_CCA, Zero)  // _CCA: Cache Coherency Attribute
+                 Method (_STA, 0, NotSerialized)  // _STA: Status
+                 {
+@@ -845,45 +858,125 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                     Memory32Fixed (ReadWrite,
+                         0x00000000,         // Address Base
+                         0x00000100,         // Address Length
+-                        _Y23)
++                        _Y24)
+                     Memory32Fixed (ReadWrite,
+                         0x00000000,         // Address Base
+                         0x00000028,         // Address Length
+-                        _Y24)
++                        _Y25)
+                     Memory32Fixed (ReadWrite,
+-                        0x7E20C000,         // Address Base
++                        0x00000000,         // Address Base
+                         0x00000028,         // Address Length
+-                        )
++                        _Y26)
+                     Memory32Fixed (ReadWrite,
+-                        0xFF20C000,         // Address Base
+-                        0x00000028,         // Address Length
++                        0xC0000000,         // Address Base
++                        0x00000001,         // Address Length
+                         )
+                     Memory32Fixed (ReadWrite,
+                         0x00000000,         // Address Base
+                         0x00000008,         // Address Length
+-                        _Y25)
++                        _Y27)
++                    Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
++                    {
++                        0x00000070,
++                    }
++                    FixedDMA (0x0001, 0x0000, Width32bit, )
++                })
++                Method (_CRS, 0, Serialized)  // _CRS: Current Resource Settings
++                {
++                    CreateDWordField (RBUF, \_SB.GDV0.PWM1._Y24._BAS, RB01)  // _BAS: Base Address
++                    RB01 = 0xFE007000
++                    CreateDWordField (RBUF, \_SB.GDV0.PWM1._Y25._BAS, RB02)  // _BAS: Base Address
++                    RB02 = 0xFE20C800
++                    CreateDWordField (RBUF, \_SB.GDV0.PWM1._Y26._BAS, RB03)  // _BAS: Base Address
++                    RB03 = 0x7E20C800
++                    CreateDWordField (RBUF, \_SB.GDV0.PWM1._Y27._BAS, RB04)  // _BAS: Base Address
++                    RB04 = 0xFE1010A0
++                    Return (RBUF) /* \_SB_.GDV0.PWM1.RBUF */
++                }
++            }
++
++            Device (AAUD)
++            {
++                Name (_HID, "RPI73EA")  // _HID: Hardware ID
++                Name (_DEP, Package (0x01)  // _DEP: Dependencies
++                {
++                    PWM1
++                })
++                Method (_STA, 0, NotSerialized)  // _STA: Status
++                {
++                    Return (0x0F)
++                }
++
++                Name (_DSD, Package (0x02)  // _DSD: Device-Specific Data
++                {
++                    ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301") /* Device Properties for _DSD */, 
++                    Package (0x03)
++                    {
++                        Package (0x02)
++                        {
++                            "pwm-clock-source", 
++                            "plld"
++                        }, 
++
++                        Package (0x02)
++                        {
++                            "pwm-clock-source-frequency", 
++                            0x2CB41780
++                        }, 
++
++                        Package (0x02)
++                        {
++                            "pwm-clock-max-frequency", 
++                            0x165A0BC0
++                        }
++                    }
++                })
++            }
++
++            Device (HDMI)
++            {
++                Name (_HID, "RPI73EB")  // _HID: Hardware ID
++                Method (_STA, 0, NotSerialized)  // _STA: Status
++                {
++                    Return (0x0F)
++                }
++
++                Name (RBUF, ResourceTemplate ()
++                {
++                    Memory32Fixed (ReadWrite,
++                        0x00000000,         // Address Base
++                        0x00000100,         // Address Length
++                        _Y28)
+                     Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                     {
+-                        0x0000003B,
++                        0x00000075,
+                     }
+-                    FixedDMA (0x0005, 0x000B, Width32bit, )
++                    FixedDMA (0x000A, 0x0005, Width32bit, )
+                 })
+                 Method (_CRS, 0, Serialized)  // _CRS: Current Resource Settings
+                 {
+-                    CreateDWordField (RBUF, \_SB.GDV0.PWM0._Y23._BAS, RB01)  // _BAS: Base Address
+-                    RB01 = 0xFE007B00
+-                    CreateDWordField (RBUF, \_SB.GDV0.PWM0._Y24._BAS, RB02)  // _BAS: Base Address
+-                    RB02 = 0xFE20C000
+-                    CreateDWordField (RBUF, \_SB.GDV0.PWM0._Y25._BAS, RB03)  // _BAS: Base Address
+-                    RB03 = 0xFE1010A0
+-                    Return (RBUF) /* \_SB_.GDV0.PWM0.RBUF */
++                    CreateDWordField (RBUF, \_SB.GDV0.HDMI._Y28._BAS, RB01)  // _BAS: Base Address
++                    RB01 = 0xFE007500
++                    Return (RBUF) /* \_SB_.GDV0.HDMI.RBUF */
++                }
++            }
++
++            Device (HAUD)
++            {
++                Name (_HID, "RPI73EC")  // _HID: Hardware ID
++                Name (_DEP, Package (0x01)  // _DEP: Dependencies
++                {
++                    HDMI
++                })
++                Method (_STA, 0, NotSerialized)  // _STA: Status
++                {
++                    Return (0x0F)
+                 }
+             }
+ 
+             Device (URT0)
+             {
+-                Name (_HID, "BCM2837")  // _HID: Hardware ID
+-                Name (_CID, "ARMH0011")  // _CID: Compatible ID
++                Name (_HID, "BCM2887")  // _HID: Hardware ID
+                 Name (_UID, 0x04)  // _UID: Unique ID
+                 Name (_CCA, Zero)  // _CCA: Cache Coherency Attribute
+                 Method (_STA, 0, NotSerialized)  // _STA: Status
+@@ -896,15 +989,21 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                     Memory32Fixed (ReadWrite,
+                         0x00000000,         // Address Base
+                         0x00001000,         // Address Length
+-                        _Y26)
++                        _Y29)
+                     Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                     {
+                         0x00000099,
+                     }
++                    PinFunction (Exclusive, PullDown, 0x0007, "\\_SB.GDV0.GPI0", 0x00,
++                        ResourceConsumer, ,)
++                        {   // Pin list
++                            0x001E,
++                            0x001F
++                        }
+                 })
+                 Method (_CRS, 0, Serialized)  // _CRS: Current Resource Settings
+                 {
+-                    CreateDWordField (RBUF, \_SB.GDV0.URT0._Y26._BAS, RBAS)  // _BAS: Base Address
++                    CreateDWordField (RBUF, \_SB.GDV0.URT0._Y29._BAS, RBAS)  // _BAS: Base Address
+                     RBAS = 0xFE201000
+                     Return (RBUF) /* \_SB_.GDV0.URT0.RBUF */
+                 }
+@@ -940,7 +1039,7 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                     Memory32Fixed (ReadWrite,
+                         0x00000000,         // Address Base
+                         0x00000070,         // Address Length
+-                        _Y27)
++                        _Y2A)
+                     Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, ,, )
+                     {
+                         0x0000007D,
+@@ -948,31 +1047,17 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                 })
+                 Method (_CRS, 0, Serialized)  // _CRS: Current Resource Settings
+                 {
+-                    CreateDWordField (RBUF, \_SB.GDV0.URTM._Y27._BAS, RBAS)  // _BAS: Base Address
++                    CreateDWordField (RBUF, \_SB.GDV0.URTM._Y2A._BAS, RBAS)  // _BAS: Base Address
+                     RBAS = 0xFE215000
+                     Return (RBUF) /* \_SB_.GDV0.URTM.RBUF */
+                 }
+-
+-                Name (MUCR, 0x01000000)
+-                Name (_DSD, Package (0x02)  // _DSD: Device-Specific Data
+-                {
+-                    ToUUID ("daffd814-6eba-4d8c-8a91-bc9bbf4aa301") /* Device Properties for _DSD */, 
+-                    Package (0x01)
+-                    {
+-                        Package (0x02)
+-                        {
+-                            "clock-frequency", 
+-                            MUCR
+-                        }
+-                    }
+-                })
+             }
+ 
+             Device (BTH0)
+             {
+                 Name (_HID, "BCM2EA6")  // _HID: Hardware ID
+                 Name (_CID, "BCM2EA6")  // _CID: Compatible ID
+-                Name (URIU, 0x02)
++                Name (URIU, One)
+                 Method (_STA, 0, NotSerialized)  // _STA: Status
+                 {
+                     Return (0x0F)
+@@ -981,7 +1066,7 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                 Name (BTPL, ResourceTemplate ()
+                 {
+                     UartSerialBusV2 (0x0001C200, DataBitsEight, StopBitsOne,
+-                        0x00, LittleEndian, ParityTypeNone, FlowControlNone,
++                        0xC0, LittleEndian, ParityTypeNone, FlowControlHardware,
+                         0x0010, 0x0010, "\\_SB.GDV0.URT0",
+                         0x00, ResourceConsumer, , Exclusive,
+                         )
+@@ -1438,7 +1523,7 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                     Memory32Fixed (ReadWrite,
+                         0x00000000,         // Address Base
+                         0x00000100,         // Address Length
+-                        _Y28)
++                        _Y2B)
+                     Interrupt (ResourceConsumer, Level, ActiveHigh, Shared, ,, )
+                     {
+                         0x0000009E,
+@@ -1446,7 +1531,7 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+                 })
+                 Method (_CRS, 0, Serialized)  // _CRS: Current Resource Settings
+                 {
+-                    CreateDWordField (RBUF, \_SB.GDV0.SDC1._Y28._BAS, RBAS)  // _BAS: Base Address
++                    CreateDWordField (RBUF, \_SB.GDV0.SDC1._Y2B._BAS, RBAS)  // _BAS: Base Address
+                     RBAS = 0xFE300000
+                     Return (RBUF) /* \_SB_.GDV0.SDC1.RBUF */
+                 }
+@@ -1575,4 +1660,3 @@ DefinitionBlock ("", "DSDT", 2, "RPIFDN"
+         }
+     }
+ }
+-

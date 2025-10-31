@@ -1,0 +1,112 @@
+--- DSDT_RPI_7c51feb.dsl	2025-10-31 12:34:36.745308000 -0400
++++ DSDT_v0.8...v0.11.dsl	2025-10-31 12:04:49.496283700 -0400
+@@ -439,18 +439,18 @@ DefinitionBlock ("", "DSDT", 5, "RPIFDN"
+                 CreateQWordField (RBUF, \_SB.GDV0._CRS._Y0F._MAX, MA17)  // _MAX: Maximum Base Address
+                 CreateQWordField (RBUF, \_SB.GDV0._CRS._Y0F._LEN, LE17)  // _LEN: Length
+                 LE17 = 0x0100
+-                MI17 = 0xFE007B00
++                MI17 = 0xFE007000
+                 MA17 = (MI17 + (LE17 - One))
+                 CreateQWordField (RBUF, \_SB.GDV0._CRS._Y10._MIN, MI18)  // _MIN: Minimum Base Address
+                 CreateQWordField (RBUF, \_SB.GDV0._CRS._Y10._MAX, MA18)  // _MAX: Maximum Base Address
+                 CreateQWordField (RBUF, \_SB.GDV0._CRS._Y10._LEN, LE18)  // _LEN: Length
+                 LE18 = 0x28
+-                MI18 = 0xFE20C000
++                MI18 = 0xFE20C800
+                 MA18 = (MI18 + (LE18 - One))
+                 CreateQWordField (RBUF, \_SB.GDV0._CRS._Y11._MIN, MI19)  // _MIN: Minimum Base Address
+                 CreateQWordField (RBUF, \_SB.GDV0._CRS._Y11._MAX, MA19)  // _MAX: Maximum Base Address
+                 CreateQWordField (RBUF, \_SB.GDV0._CRS._Y11._LEN, LE19)  // _LEN: Length
+-                MI19 = 0x7E20C000
++                MI19 = 0x7E20C800
+                 LE19 = 0x28
+                 MA19 = (MI19 + (LE19 - One))
+                 CreateQWordField (RBUF, \_SB.GDV0._CRS._Y12._MIN, MI20)  // _MIN: Minimum Base Address
+@@ -934,7 +934,7 @@ DefinitionBlock ("", "DSDT", 5, "RPIFDN"
+                         0x00000028,         // Address Length
+                         _Y26)
+                     Memory32Fixed (ReadWrite,
+-                        0x7E20C000,         // Address Base
++                        0x7E20C800,         // Address Base
+                         0x00000028,         // Address Length
+                         )
+                     Memory32Fixed (ReadWrite,
+@@ -947,16 +947,16 @@ DefinitionBlock ("", "DSDT", 5, "RPIFDN"
+                         _Y27)
+                     Interrupt (ResourceConsumer, Level, ActiveHigh, Exclusive, ,, )
+                     {
+-                        0x0000003B,
++                        0x00000070,
+                     }
+-                    FixedDMA (0x0005, 0x000B, Width32bit, )
++                    FixedDMA (0x0001, 0x0000, Width32bit, )
+                 })
+                 Method (_CRS, 0, Serialized)  // _CRS: Current Resource Settings
+                 {
+                     CreateDWordField (RBUF, \_SB.GDV0.PWM0._Y25._BAS, RB01)  // _BAS: Base Address
+-                    RB01 = 0xFE007B00
++                    RB01 = 0xFE007000
+                     CreateDWordField (RBUF, \_SB.GDV0.PWM0._Y26._BAS, RB02)  // _BAS: Base Address
+-                    RB02 = 0xFE20C000
++                    RB02 = 0xFE20C800
+                     CreateDWordField (RBUF, \_SB.GDV0.PWM0._Y27._BAS, RB03)  // _BAS: Base Address
+                     RB03 = 0xFE1010A0
+                     Return (RBUF) /* \_SB_.GDV0.PWM0.RBUF */
+@@ -984,6 +984,17 @@ DefinitionBlock ("", "DSDT", 5, "RPIFDN"
+                     {
+                         0x00000099,
+                     }
++                    PinFunction (Exclusive, PullDown, 0x0007, "\\_SB.GDV0.GPI0", 0x00,
++                        ResourceConsumer, ,)
++                        {   // Pin list
++                            0x0020,
++                            0x0021
++                        }
++                    PinFunction (Exclusive, PullNone, 0x0006, "\\_SB.GDV0.GPI0", 0x00,
++                        ResourceConsumer, ,)
++                        {   // Pin list
++                            0x001F
++                        }
+                 })
+                 Method (_CRS, 0, Serialized)  // _CRS: Current Resource Settings
+                 {
+@@ -1052,7 +1063,7 @@ DefinitionBlock ("", "DSDT", 5, "RPIFDN"
+                     {
+                         UartSerialBusV2 (0x0001C200, DataBitsEight, StopBitsOne,
+                             0x00, LittleEndian, ParityTypeNone, FlowControlNone,
+-                            0x0010, 0x0010, "\\_SB.GDV0.URTM",
++                            0x0010, 0x0010, "\\_SB.GDV0.URT0",
+                             0x00, ResourceConsumer, , Exclusive,
+                             )
+                         GpioIo (Shared, PullUp, 0x0000, 0x0000, IoRestrictionNone,
+@@ -1214,30 +1225,6 @@ DefinitionBlock ("", "DSDT", 5, "RPIFDN"
+                         }
+                     GpioIo (Shared, PullDown, 0x0000, 0x0000, IoRestrictionNone,
+                         "\\_SB.GDV0.GPI0", 0x00, ResourceConsumer, ,
+-                        )
+-                        {   // Pin list
+-                            0x000C
+-                        }
+-                    GpioInt (Edge, ActiveBoth, Shared, PullDown, 0x0000,
+-                        "\\_SB.GDV0.GPI0", 0x00, ResourceConsumer, ,
+-                        )
+-                        {   // Pin list
+-                            0x000C
+-                        }
+-                    GpioIo (Shared, PullDown, 0x0000, 0x0000, IoRestrictionNone,
+-                        "\\_SB.GDV0.GPI0", 0x00, ResourceConsumer, ,
+-                        )
+-                        {   // Pin list
+-                            0x000D
+-                        }
+-                    GpioInt (Edge, ActiveBoth, Shared, PullDown, 0x0000,
+-                        "\\_SB.GDV0.GPI0", 0x00, ResourceConsumer, ,
+-                        )
+-                        {   // Pin list
+-                            0x000D
+-                        }
+-                    GpioIo (Shared, PullDown, 0x0000, 0x0000, IoRestrictionNone,
+-                        "\\_SB.GDV0.GPI0", 0x00, ResourceConsumer, ,
+                         )
+                         {   // Pin list
+                             0x0010
