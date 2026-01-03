@@ -4,92 +4,92 @@ Class=MEDIA
 ClassGUID={4d36e96c-e325-11ce-bfc1-08002be10318}
 
 Provider=%ProviderString%
-CatalogFile=rpiwav.cat
+CatalogFile=rpihdmi0wav.cat
 
 [SourceDisksNames]
-222="RPIWAV Driver Disk","",222
+222="RPIHDMI0WAV Driver Disk","",222
 
 [SourceDisksFiles]
-rpiwav.sys=222
+rpihdmi0wav.sys=222
 
 [Manufacturer]
 %MfgName%=MicrosoftDS,NT$ARCH$
 
 [MicrosoftDS.NT$ARCH$]
-%RPIWAV_SA.DeviceDesc%=RPIWAV_SA, Root\rpiwav
+%RPIHDMI0WAV_SA.DeviceDesc%=RPIHDMI0WAV_SA, Root\rpihdmi0wav
 ; ACPITABL.dat
-%RPIWAV_SA.DeviceDesc%=RPIWAV_SA, ACPI\RPI73EA
+%RPIHDMI0WAV_SA.DeviceDesc%=RPIHDMI0WAV_SA, ACPI\RPI73EC
 ; ACPITABL.dat
 
 [DestinationDirs]
-RPIWAV_SA.CopyList=12 ; windows\system32\drivers
+RPIHDMI0WAV_SA.CopyList=12 ; windows\system32\drivers
 
 ;======================================================
-; RPIWAV_SA
+; RPIHDMI0WAV_SA
 ;======================================================
-[RPIWAV_SA.CopyList]
-rpiwav.sys
+[RPIHDMI0WAV_SA.CopyList]
+rpihdmi0wav.sys
 
-[RPIWAV_SA.AddReg]
+[RPIHDMI0WAV_SA.AddReg]
 HKR,,AssociatedFilters,,"wdmaud"
-HKR,,Driver,,rpiwav.sys
+HKR,,Driver,,rpihdmi0wav.sys
 
 HKR,Drivers,SubClasses,,"wave"
 
 HKR,Drivers\wave\wdmaud.drv,Driver,,wdmaud.drv
 
-HKR,Drivers\wave\wdmaud.drv,Description,,%RPIWAV_SA.DeviceDesc%
+HKR,Drivers\wave\wdmaud.drv,Description,,%RPIHDMI0WAV_SA.DeviceDesc%
 
 ;======================================================
 ; render interfaces: speaker (external: headphone)
 ;======================================================
-[RPIWAV.I.WaveSpeakerHeadphone]
-AddReg=RPIWAV.I.WaveSpeakerHeadphone.AddReg
-[RPIWAV.I.WaveSpeakerHeadphone.AddReg]
+[RPIHDMI0WAV.I.WaveSpeakerHeadphone]
+AddReg=RPIHDMI0WAV.I.WaveSpeakerHeadphone.AddReg
+[RPIHDMI0WAV.I.WaveSpeakerHeadphone.AddReg]
 HKR,,CLSID,,%Proxy.CLSID%
-HKR,,FriendlyName,,%RPIWAV.WaveSpeakerHeadphone.szPname%
+HKR,,FriendlyName,,%RPIHDMI0WAV.WaveSpeakerHeadphone.szPname%
 
-[RPIWAV.I.TopologySpeakerHeadphone]
-AddReg=RPIWAV.I.TopologySpeakerHeadphone.AddReg
-[RPIWAV.I.TopologySpeakerHeadphone.AddReg]
+[RPIHDMI0WAV.I.TopologySpeakerHeadphone]
+AddReg=RPIHDMI0WAV.I.TopologySpeakerHeadphone.AddReg
+[RPIHDMI0WAV.I.TopologySpeakerHeadphone.AddReg]
 HKR,,CLSID,,%Proxy.CLSID%
-HKR,,FriendlyName,,%RPIWAV.TopologySpeakerHeadphone.szPname%
+HKR,,FriendlyName,,%RPIHDMI0WAV.TopologySpeakerHeadphone.szPname%
 ; The following lines opt-in to pull mode.
 HKR,EP\0,%PKEY_AudioEndpoint_Association%,,%KSNODETYPE_ANY%
 HKR,EP\0,%PKEY_AudioEndpoint_Supports_EventDriven_Mode%,0x00010001,0x1
 
 
 ;======================================================
-; RPIWAV_SA
+; RPIHDMI0WAV_SA
 ;======================================================
-[RPIWAV_SA.NT]
+[RPIHDMI0WAV_SA.NT]
 Include=ks.inf,wdmaudio.inf
 Needs=KS.Registration, WDMAUDIO.Registration
-CopyFiles=RPIWAV_SA.CopyList
-AddReg=RPIWAV_SA.AddReg
+CopyFiles=RPIHDMI0WAV_SA.CopyList
+AddReg=RPIHDMI0WAV_SA.AddReg
 
-[RPIWAV_SA.NT.Interfaces]
+[RPIHDMI0WAV_SA.NT.Interfaces]
 ;
 ; Interfaces for speaker (external: headphone) render endpoint.
 ;
-AddInterface=%KSCATEGORY_AUDIO%, %KSNAME_WaveSpeakerHeadphone%, RPIWAV.I.WaveSpeakerHeadphone
-AddInterface=%KSCATEGORY_RENDER%, %KSNAME_WaveSpeakerHeadphone%, RPIWAV.I.WaveSpeakerHeadphone
-AddInterface=%KSCATEGORY_REALTIME%, %KSNAME_WaveSpeakerHeadphone%, RPIWAV.I.WaveSpeakerHeadphone
-AddInterface=%KSCATEGORY_AUDIO%, %KSNAME_TopologySpeakerHeadphone%, RPIWAV.I.TopologySpeakerHeadphone
-AddInterface=%KSCATEGORY_TOPOLOGY%, %KSNAME_TopologySpeakerHeadphone%, RPIWAV.I.TopologySpeakerHeadphone
+AddInterface=%KSCATEGORY_AUDIO%, %KSNAME_WaveSpeakerHeadphone%, RPIHDMI0WAV.I.WaveSpeakerHeadphone
+AddInterface=%KSCATEGORY_RENDER%, %KSNAME_WaveSpeakerHeadphone%, RPIHDMI0WAV.I.WaveSpeakerHeadphone
+AddInterface=%KSCATEGORY_REALTIME%, %KSNAME_WaveSpeakerHeadphone%, RPIHDMI0WAV.I.WaveSpeakerHeadphone
+AddInterface=%KSCATEGORY_AUDIO%, %KSNAME_TopologySpeakerHeadphone%, RPIHDMI0WAV.I.TopologySpeakerHeadphone
+AddInterface=%KSCATEGORY_TOPOLOGY%, %KSNAME_TopologySpeakerHeadphone%, RPIHDMI0WAV.I.TopologySpeakerHeadphone
 
 
-[RPIWAV_SA.NT.Services]
-AddService=rpiwav,0x00000002,rpiwav_Service_Inst
+[RPIHDMI0WAV_SA.NT.Services]
+AddService=rpihdmi0wav,0x00000002,rpihdmi0wav_Service_Inst
 
-[rpiwav_Service_Inst]
-DisplayName=%RPIWAV.SvcDesc%
+[rpihdmi0wav_Service_Inst]
+DisplayName=%RPIHDMI0WAV.SvcDesc%
 ServiceType=1
 StartType=3
 ErrorControl=1
-ServiceBinary=%10%\system32\drivers\rpiwav.sys
+ServiceBinary=%10%\system32\drivers\rpihdmi0wav.sys
 
-[RPIWAV_SA.NT.HW]
+[RPIHDMI0WAV_SA.NT.HW]
 AddReg = AUDIOHW.AddReg
 
 [AUDIOHW.AddReg]
@@ -99,17 +99,17 @@ HKR,,DeviceType,0x10001,0x0000001D
 HKR,,Security,,"D:P(A;;GA;;;SY)(A;;GRGWGX;;;BA)(A;;GRGWGX;;;WD)(A;;GRGWGX;;;RC)"
 
 [DeviceInstall32]
-AddDevice = ROOT\rpiwav\0000,,rpiwav_RootDevice_Inst
+AddDevice = ROOT\rpihdmi0wav\0000,,rpihdmi0wav_RootDevice_Inst
 
-[rpiwav_RootDevice_Inst]
-HardwareIds = ROOT\rpiwav
+[rpihdmi0wav_RootDevice_Inst]
+HardwareIds = ROOT\rpihdmi0wav
 
 ;======================================================
 ; WDF
 ;======================================================
-[RPIWAV_SA.NT.Wdf]
-KmdfService = rpiwav, RPIWAV_SA_WdfSect
-[RPIWAV_SA_WdfSect]
+[RPIHDMI0WAV_SA.NT.Wdf]
+KmdfService = rpihdmi0wav, RPIHDMI0WAV_SA_WdfSect
+[RPIHDMI0WAV_SA_WdfSect]
 KmdfLibraryVersion = $KMDFVERSION$
 
 ;======================================================
@@ -141,9 +141,9 @@ ProviderString="MS-IOT"
 MfgName="Microsoft"
 MsCopyRight="Copyright (c) Microsoft Corporation All Rights Reserved"
 
-RPIWAV_SA.DeviceDesc="Raspberry Pi AV Jack Audio"
-RPIWAV.SvcDesc="Raspberry Pi AV Jack Audio Driver"
+RPIHDMI0WAV_SA.DeviceDesc="Raspberry Pi HDMI 0 Audio"
+RPIHDMI0WAV.SvcDesc="Raspberry Pi HDMI 0 Audio Driver"
 
 ;; friendly names
-RPIWAV.WaveSpeakerHeadphone.szPname="Raspberry Pi AV Jack Audio Output"
-RPIWAV.TopologySpeakerHeadphone.szPname="Raspberry Pi AV Jack Audio Output"
+RPIHDMI0WAV.WaveSpeakerHeadphone.szPname="Raspberry Pi HDMI 0 Audio Output"
+RPIHDMI0WAV.TopologySpeakerHeadphone.szPname="Raspberry Pi HDMI 0 Audio Output"

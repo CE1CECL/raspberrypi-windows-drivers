@@ -1,0 +1,65 @@
+; Copyright (c) Microsoft Corporation All Rights Reserved
+;
+; Abstract:
+;    INF file for installing the RPI HDMI0 AUDIO BRIDGE
+;
+
+[Version]
+Signature="$Windows NT$"
+Class=SYSTEM
+ClassGUID={4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider=%ProviderString%
+CatalogFile=rpihdmi0wavbridge.cat
+
+
+[SourceDisksNames]
+1=%DiskDescription%
+
+[SourceDisksFiles]
+rpihdmi0wavbridge.sys=1
+rpihdmi0wavbridge.inf=1
+
+[DestinationDirs]
+rpihdmi0wavbridge.CopyList = 10,system32\drivers
+
+[Manufacturer]
+%MfgName%=rpihdmi0wavbridge_Driver,NT$ARCH$
+
+[rpihdmi0wavbridge_Driver.NT$ARCH$]
+; ACPITABL.dat
+%rpihdmi0wavbridge.DeviceDesc%=rpihdmi0wavbridge, ACPI\RPI73EB
+; ACPITABL.dat
+
+[rpihdmi0wavbridge]
+CopyFiles=rpihdmi0wavbridge.CopyList
+AddReg=rpihdmi0wavbridge.AddReg
+
+[rpihdmi0wavbridge.CopyList]
+rpihdmi0wavbridge.sys
+
+[rpihdmi0wavbridge.AddReg]
+;HKR,,Driver,,rpihdmi0wavbridge.sys
+
+[rpihdmi0wavbridge.Services]
+AddService = rpihdmi0wavbridge, 0x00000002, rpihdmi0wavbridge_Service_Inst
+
+[rpihdmi0wavbridge_Service_Inst]
+DisplayName   = %rpihdmi0wavbridge.SvcDesc%
+ServiceType   = %SERVICE_KERNEL_DRIVER%
+StartType     = %SERVICE_SYSTEM_START%
+ErrorControl  = %SERVICE_ERROR_NORMAL%
+ServiceBinary = %10%\system32\drivers\rpihdmi0wavbridge.sys
+
+[Strings]
+ProviderString="MS-IOT"
+MfgName="Microsoft"
+DiskDescription="Raspberry Pi HDMI 0 Audio Bridge Install Disk"
+rpihdmi0wavbridge.DeviceDesc="Raspberry Pi HDMI 0 Audio Bridge"
+
+rpihdmi0wavbridge.SvcDesc = "Raspberry Pi HDMI 0 Audio Bridge Driver"
+
+SERVICE_KERNEL_DRIVER   = 1
+SERVICE_SYSTEM_START    = 1
+SERVICE_DEMAND_START    = 3
+SERVICE_ERROR_NORMAL    = 1
+
